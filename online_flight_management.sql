@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2022 at 04:26 PM
+-- Generation Time: Dec 04, 2022 at 03:55 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -34,6 +34,17 @@ CREATE TABLE `airlines` (
   `Ticket_fare_rate` double(7,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `airlines`
+--
+
+INSERT INTO `airlines` (`Name`, `Flight_types`, `AIRLINE_code`, `Ticket_fare_rate`) VALUES
+('Biman Bangladesh', 'Both', 'BBC', NULL),
+('NovoAir', 'Both', 'NVQ', NULL),
+('Regent Airways', 'Both', 'RGE', NULL),
+('US Bangla', 'Both', 'UBG', NULL),
+('Air Asta', 'Dmoestic', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -50,6 +61,20 @@ CREATE TABLE `airport` (
   `Time_difference` varchar(10) DEFAULT NULL,
   `Permission_for_direct_Flight` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `airport`
+--
+
+INSERT INTO `airport` (`Name`, `Country`, `City`, `Distance`, `Region`, `Duration`, `Time_difference`, `Permission_for_direct_Flight`) VALUES
+('Indira Gandhi International Airport', 'India', 'New Delhi', 1223, 'Asia', '4 hr 45 mi', '-30 mins', NULL),
+('Benazir Bhutto International Airport', 'Pakistan', 'Islamabad', 2208, 'Asia', '9 hr 30 mi', '-1 hr', NULL),
+('Tribhuvan Interntional Airport', 'Nepal', 'Kathmandu', 814, 'Asia', '1 hr 25 mi', '-15 min', NULL),
+('Beijing Capital International Airport', 'China', 'Beijing', 1895, 'Asia', '7 hr 00 mi', '2 hr +', NULL),
+('Naypyidaw International Airport', 'Myanmmer', 'Naypyidaw', 607, 'Asia', '1 hr 45 mi', '30 min +', NULL),
+('Paro International Airport', 'Bhutan', 'Thimphu', 426, 'Asia', '1 hr 05 mi', '0', NULL),
+('Taoyuan International', 'Taiwan', 'Taipei', 3106, 'Asia', '4 hr 40 mi', '2 hr +', NULL),
+('Bandaranaike International Airport', 'Sri Lanka', 'Colombo', 2027, 'Asia', '3 hr 25 mi', '-30 min', NULL);
 
 -- --------------------------------------------------------
 
@@ -78,6 +103,24 @@ CREATE TABLE `domestic` (
   `Airport` varchar(50) DEFAULT NULL,
   `Duration` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `domestic`
+--
+
+INSERT INTO `domestic` (`City`, `Airport`, `Duration`) VALUES
+('Dhaka', 'Hazrat Shahjalal International Airport', NULL),
+('Chittagong', 'Shah Amanat International Airport', NULL),
+('Rajshahi', 'Shah Makhdum Airport', NULL),
+('Jashore', 'Jashore Airport', NULL),
+('Barisal', 'Barisal Airport', NULL),
+('Coxs Bazar', 'Coxs Bazar International Airport', NULL),
+('Sylhet', 'Osmani International Airport', NULL),
+('Saidpur', 'Saidpur Airport', NULL),
+('Ishwardi', 'Ishwardi Airport', NULL),
+('Comilla', 'Comilla Airport', NULL),
+('Khulna', 'Khan Jahan Ali Airport', NULL),
+('Lalmonirhat', 'Lalmonirhat Airport', NULL);
 
 -- --------------------------------------------------------
 
