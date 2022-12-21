@@ -25,6 +25,7 @@ if($results== Password)   /* Password entered in the login page is used to compa
         /*redirect to admin page*/
     }
     else{
+
         
     }
 }

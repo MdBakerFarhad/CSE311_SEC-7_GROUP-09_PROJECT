@@ -1,6 +1,15 @@
 <?php
 $db=mysqli_connect("localhost", "root", "", "online_flight_management");
 
+if(!$db)
+{
+    echo "database connection failed" . mysqli_error();
+}
+else
+{
+    echo "database connection successful" . "<br>";
+}
+
 $Booking_ID = rand(0,1000000000); /* Generates a unique ID for the booking*/
 $User_ID;  /*User's ID*/
 $FlightID; /* Flight ID of desire from the search list of flights*/
@@ -14,6 +23,7 @@ if ($Seats<= $result)
      VALUES ($Booking_ID, $User_ID, $FlightID, $Seats, (SELECT CONCAT(First_Name, " ", Last_Name) FROM User WHERE User_ID=$User_ID), (SELECT Departure FROM Flight WHERE Flight_code=$FlightID) ) ";
     $result1=mysqli_query($db,$sql1);
     $sqli2="INSERT INTO Flight(Capacity) VALUEs($result-$Seats) WHERE Flight_code=$FlightID"; 
+    echo $Booking_ID;
 }
 else{
     echo "Not enough seats available";

@@ -1,7 +1,14 @@
 <?php
 $db=mysqli_connect("localhost", "root", "", "online_flight_management");
 
-
+if(!$db)
+{
+    echo "database connection failed" . mysqli_error();
+}
+else
+{
+    echo "database connection successful" . "<br>";
+}
 
 $sql= "SELECT* FROM Flight WHERE Departure=Depart AND Arrival= Arrive "; /* Depart and Arrive are the locations selected in the page that are passed to the query*/
 $result=mysqli_query($db,$sql);
