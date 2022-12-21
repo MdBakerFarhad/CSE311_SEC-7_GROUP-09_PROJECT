@@ -22,7 +22,7 @@ if ($Seats<= $result)
     $sql1= "INSERT INTO Booking(Booking_Id, User_ID, Flight_code, Quantity, Registered_Name, Airport)
      VALUES ($Booking_ID, $User_ID, $FlightID, $Seats, (SELECT CONCAT(First_Name, " ", Last_Name) FROM User WHERE User_ID=$User_ID), (SELECT Departure FROM Flight WHERE Flight_code=$FlightID) ) ";
     $result1=mysqli_query($db,$sql1);
-    $sqli2="INSERT INTO Flight(Capacity) VALUEs($result-$Seats) WHERE Flight_code=$FlightID"; 
+    $sqli2="INSERT INTO Flight(Capacity) VALUES($result-$Seats) WHERE Flight_code=$FlightID"; 
     echo $Booking_ID;
 }
 else{
