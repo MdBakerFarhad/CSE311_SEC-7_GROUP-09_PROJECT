@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2022 at 03:55 PM
+-- Generation Time: Dec 21, 2022 at 11:53 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -134,7 +134,8 @@ CREATE TABLE `flight` (
   `Departure` varchar(50) DEFAULT NULL,
   `Arrival` varchar(50) DEFAULT NULL,
   `Time_of_flight` varchar(10) DEFAULT NULL,
-  `Date_of_flight` date DEFAULT NULL
+  `Date_of_flight` date DEFAULT NULL,
+  `Capacity` int(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -151,7 +152,8 @@ CREATE TABLE `user` (
   `Level_of_Access` varchar(10) NOT NULL,
   `Date_of_membership` date NOT NULL,
   `Passport_No` int(40) DEFAULT NULL,
-  `DOB` date NOT NULL
+  `DOB` date NOT NULL,
+  `Pass_word` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
