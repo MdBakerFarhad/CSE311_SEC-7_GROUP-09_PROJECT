@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2022 at 11:53 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Dec 21, 2022 at 12:21 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -153,7 +153,8 @@ CREATE TABLE `user` (
   `Date_of_membership` date NOT NULL,
   `Passport_No` int(40) DEFAULT NULL,
   `DOB` date NOT NULL,
-  `Pass_word` varchar(10) DEFAULT NULL
+  `Pass_word` varchar(10) DEFAULT NULL,
+  `Email` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
