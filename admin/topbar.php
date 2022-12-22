@@ -1,7 +1,7 @@
 <style>
 	.logo {
     margin: auto;
-    font-size: 20px;
+    font-size: 200px;
     background: #ff7300;
     padding: 7px 11px;
     border-radius: 50% 50%;
