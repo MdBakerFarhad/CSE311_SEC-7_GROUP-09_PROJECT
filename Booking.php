@@ -12,17 +12,19 @@ else
 
 $Booking_ID = rand(0,1000000000); /* Generates a unique ID for the booking*/
 $User_ID;  /*User's ID*/
+$Name;
+$Address;
+$Contact;
 $FlightID; /* Flight ID of desire from the search list of flights*/
 $Seats; /* Demanded quantity*/
-$sql= " SELECT Capacity FROM Flight WHERE Flight_code= $FlightID "; 
+$sql= " SELECT seats FROM flight_list WHERE id= $FlightID "; 
 $result=mysqli_query($db,$sql);
 
 if ($Seats<= $result)
 {
-    $sql1= "INSERT INTO Booking(Booking_Id, User_ID, Flight_code, Quantity, Registered_Name, Airport)
-     VALUES ($Booking_ID, $User_ID, $FlightID, $Seats, (SELECT CONCAT(First_Name, " ", Last_Name) FROM User WHERE User_ID=$User_ID), (SELECT Departure FROM Flight WHERE Flight_code=$FlightID) ) ";
-    $result1=mysqli_query($db,$sql1);
-    $sqli2="INSERT INTO Flight(Capacity) VALUES($result-$Seats) WHERE Flight_code=$FlightID"; 
+    $sql1= "INSERT INTO booked_flight(id, flight_id,name,address,contact)
+     VALUES ($Booking_ID,$FlightID,$Name,$Address,$Contact)";
+    $sqli2="INSERT INTO flight_list(seats) VALUES($result-$Seats) WHERE id=$FlightID"; 
     echo $Booking_ID;
 }
 else{

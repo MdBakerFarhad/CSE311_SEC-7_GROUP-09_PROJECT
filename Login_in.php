@@ -10,23 +10,26 @@ else
 {
     echo "database connection successful" . "<br>";
 }
+$username;
+$Password;
 
-$sql = "SELECT Pass_word FROM User WHERE User_ID= Id";  /*Id is received from the login page that is used for finding the specific record*/
+
+$sql = "SELECT password FROM users WHERE username= $username";  /*username is received from the login page that is used for finding the specific record*/
 $results= mysqli_query($db, $sql);
-$sql1 = "SELECT Level_of_Access FROM User WHERE User_ID= Id";
+$sql1 = "SELECT type FROM users WHERE username= $username";
 $results1= mysqli_query($db, $sql1);
 
 
-if($results== Password)   /* Password entered in the login page is used to compare with the password of the entered Id if same login is successful*/
+if($results== $Password)   /* Password entered in the login page is used to compare with the password of the entered Id if same login is successful*/
 {
     echo "Welcome!!"
-    if($results1 == 'Admin')
+    if ($results1 = 1)
     {
         /*redirect to admin page*/
     }
     else{
 
-        
+        /*redirect to customer page */
     }
 }
 else
