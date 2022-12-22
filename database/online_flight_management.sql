@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2022 at 03:55 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Dec 22, 2022 at 02:13 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,157 +18,191 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `online_flight_management`
+-- Database: `flight_booking_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `airlines`
+-- Table structure for table `airlines_list`
 --
 
-CREATE TABLE `airlines` (
-  `Name` varchar(20) DEFAULT NULL,
-  `Flight_types` varchar(10) DEFAULT NULL,
-  `AIRLINE_code` varchar(10) DEFAULT NULL,
-  `Ticket_fare_rate` double(7,2) DEFAULT NULL
+CREATE TABLE `airlines_list` (
+  `id` int(30) NOT NULL,
+  `airlines` text NOT NULL,
+  `logo_path` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `airlines`
+-- Dumping data for table `airlines_list`
 --
 
-INSERT INTO `airlines` (`Name`, `Flight_types`, `AIRLINE_code`, `Ticket_fare_rate`) VALUES
-('Biman Bangladesh', 'Both', 'BBC', NULL),
-('NovoAir', 'Both', 'NVQ', NULL),
-('Regent Airways', 'Both', 'RGE', NULL),
-('US Bangla', 'Both', 'UBG', NULL),
-('Air Asta', 'Dmoestic', NULL, NULL);
+INSERT INTO `airlines_list` (`id`, `airlines`, `logo_path`) VALUES
+(1, 'AirAsia', '1600999080_kisspng-flight-indonesia-airasia-airasia-japan-airline-tic-asia-5abad146966736.8321896415221927106161.jpg'),
+(2, 'Philippine Airlines', '1600999200_Philippine-Airlines-Logo.jpg'),
+(3, 'Cebu Pacific', '1600999200_43cada0008538e3c1a1f4675e5a7aabe.jpeg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `airport`
+-- Table structure for table `airport_list`
 --
 
-CREATE TABLE `airport` (
-  `Name` varchar(50) DEFAULT NULL,
-  `Country` varchar(20) DEFAULT NULL,
-  `City` varchar(20) DEFAULT NULL,
-  `Distance` int(7) DEFAULT NULL,
-  `Region` varchar(10) DEFAULT NULL,
-  `Duration` varchar(10) DEFAULT NULL,
-  `Time_difference` varchar(10) DEFAULT NULL,
-  `Permission_for_direct_Flight` tinyint(1) DEFAULT NULL
+CREATE TABLE `airport_list` (
+  `id` int(30) NOT NULL,
+  `airport` text NOT NULL,
+  `location` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `airport`
+-- Dumping data for table `airport_list`
 --
 
-INSERT INTO `airport` (`Name`, `Country`, `City`, `Distance`, `Region`, `Duration`, `Time_difference`, `Permission_for_direct_Flight`) VALUES
-('Indira Gandhi International Airport', 'India', 'New Delhi', 1223, 'Asia', '4 hr 45 mi', '-30 mins', NULL),
-('Benazir Bhutto International Airport', 'Pakistan', 'Islamabad', 2208, 'Asia', '9 hr 30 mi', '-1 hr', NULL),
-('Tribhuvan Interntional Airport', 'Nepal', 'Kathmandu', 814, 'Asia', '1 hr 25 mi', '-15 min', NULL),
-('Beijing Capital International Airport', 'China', 'Beijing', 1895, 'Asia', '7 hr 00 mi', '2 hr +', NULL),
-('Naypyidaw International Airport', 'Myanmmer', 'Naypyidaw', 607, 'Asia', '1 hr 45 mi', '30 min +', NULL),
-('Paro International Airport', 'Bhutan', 'Thimphu', 426, 'Asia', '1 hr 05 mi', '0', NULL),
-('Taoyuan International', 'Taiwan', 'Taipei', 3106, 'Asia', '4 hr 40 mi', '2 hr +', NULL),
-('Bandaranaike International Airport', 'Sri Lanka', 'Colombo', 2027, 'Asia', '3 hr 25 mi', '-30 min', NULL);
+INSERT INTO `airport_list` (`id`, `airport`, `location`) VALUES
+(2, 'Beijing Capital International Airport', 'Chaoyang-Shunyi, Beijing'),
+(3, 'Los Angeles International Airport', 'Los Angeles, California'),
+(4, 'Dubai International Airport', 'Garhoud, Dubai'),
+(5, 'Mactan-Cebu Airport', 'Cebu'),
+(6, 'Hazrat Shah Jalal', 'Dhaka, Bangladesh '),
+(7, 'Benazir Bhutto International Airport', 'Islamabad,Pakistan'),
+(8, 'Indira Gandhi International Airport', '\r\nNew Delhi,India'),
+(9, 'Bandaranaike International Airport', 'Colombo,Sri Lanka\r\n'),
+(10, 'Paro International Airport\r\n', 'Thimphu,Bhutan'),
+(11, 'Naypyidaw International Airport', 'Naypyidaw,Myanmmer');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `booking`
+-- Table structure for table `booked_flight`
 --
 
-CREATE TABLE `booking` (
-  `Booking_Id` int(10) DEFAULT NULL,
-  `User_ID` int(10) DEFAULT NULL,
-  `Flight_code` varchar(10) DEFAULT NULL,
-  `Payment` double(10,2) DEFAULT NULL,
-  `Quantity` int(11) DEFAULT NULL,
-  `Registered_Name` varchar(20) DEFAULT NULL,
-  `Airport` varchar(30) DEFAULT NULL
+CREATE TABLE `booked_flight` (
+  `id` int(30) NOT NULL,
+  `flight_id` int(30) NOT NULL,
+  `name` text NOT NULL,
+  `address` text NOT NULL,
+  `contact` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `domestic`
+-- Table structure for table `flight_list`
 --
 
-CREATE TABLE `domestic` (
-  `City` varchar(20) DEFAULT NULL,
-  `Airport` varchar(50) DEFAULT NULL,
-  `Duration` varchar(10) DEFAULT NULL
+CREATE TABLE `flight_list` (
+  `id` int(30) NOT NULL,
+  `airline_id` int(30) NOT NULL,
+  `plane_no` text NOT NULL,
+  `departure_airport_id` int(30) NOT NULL,
+  `arrival_airport_id` int(30) NOT NULL,
+  `departure_datetime` datetime NOT NULL,
+  `arrival_datetime` datetime NOT NULL,
+  `seats` int(10) NOT NULL DEFAULT 0,
+  `price` double NOT NULL,
+  `date_created` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `domestic`
+-- Dumping data for table `flight_list`
 --
 
-INSERT INTO `domestic` (`City`, `Airport`, `Duration`) VALUES
-('Dhaka', 'Hazrat Shahjalal International Airport', NULL),
-('Chittagong', 'Shah Amanat International Airport', NULL),
-('Rajshahi', 'Shah Makhdum Airport', NULL),
-('Jashore', 'Jashore Airport', NULL),
-('Barisal', 'Barisal Airport', NULL),
-('Coxs Bazar', 'Coxs Bazar International Airport', NULL),
-('Sylhet', 'Osmani International Airport', NULL),
-('Saidpur', 'Saidpur Airport', NULL),
-('Ishwardi', 'Ishwardi Airport', NULL),
-('Comilla', 'Comilla Airport', NULL),
-('Khulna', 'Khan Jahan Ali Airport', NULL),
-('Lalmonirhat', 'Lalmonirhat Airport', NULL);
+INSERT INTO `flight_list` (`id`, `airline_id`, `plane_no`, `departure_airport_id`, `arrival_airport_id`, `departure_datetime`, `arrival_datetime`, `seats`, `price`, `date_created`) VALUES
+(4, 3, 'CEB10023', 1, 5, '2021-03-20 01:00:00', '2021-03-20 02:00:00', 100, 3500, '2021-02-25 14:50:47'),
+(5, 2, '123', 4, 3, '2022-12-15 07:39:00', '2022-12-28 07:39:00', 120, 2345, '2022-12-22 07:39:33');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `flight`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `flight` (
-  `Flight_code` varchar(10) DEFAULT NULL,
-  `Airline_code` varchar(10) DEFAULT NULL,
-  `Departure` varchar(50) DEFAULT NULL,
-  `Arrival` varchar(50) DEFAULT NULL,
-  `Time_of_flight` varchar(10) DEFAULT NULL,
-  `Date_of_flight` date DEFAULT NULL
+CREATE TABLE `users` (
+  `id` int(30) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `address` text NOT NULL,
+  `contact` text NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `type` tinyint(1) NOT NULL DEFAULT 2 COMMENT '1=admin , 2 = staff'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `user`
+-- Dumping data for table `users`
 --
 
-CREATE TABLE `user` (
-  `User_ID` int(10) NOT NULL,
-  `First_Name` varchar(30) NOT NULL,
-  `Last_Name` varchar(30) NOT NULL,
-  `Membership` varchar(10) NOT NULL,
-  `Level_of_Access` varchar(10) NOT NULL,
-  `Date_of_membership` date NOT NULL,
-  `Passport_No` int(40) DEFAULT NULL,
-  `DOB` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `users` (`id`, `name`, `address`, `contact`, `username`, `password`, `type`) VALUES
+(1, 'Boss', '', '', 'admin', 'admin123', 1),
+(2, 'Baker', '', '', 'baker', 'admin123', 2),
+(17, 'Farhad', '', '', 'farhad', 'farhad123', 2);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `airlines`
+-- Indexes for table `airlines_list`
 --
-ALTER TABLE `airlines`
-  ADD UNIQUE KEY `AIRLINE_code` (`AIRLINE_code`);
+ALTER TABLE `airlines_list`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Indexes for table `airport_list`
 --
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`User_ID`);
+ALTER TABLE `airport_list`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `booked_flight`
+--
+ALTER TABLE `booked_flight`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `flight_list`
+--
+ALTER TABLE `flight_list`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `airlines_list`
+--
+ALTER TABLE `airlines_list`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `airport_list`
+--
+ALTER TABLE `airport_list`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `booked_flight`
+--
+ALTER TABLE `booked_flight`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `flight_list`
+--
+ALTER TABLE `flight_list`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
