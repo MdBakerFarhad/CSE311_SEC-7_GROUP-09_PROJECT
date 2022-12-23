@@ -48,7 +48,7 @@
 								<tr>
 									<th class="text-center">#</th>
 									<th class="text-center">Airport</th>
-									<th class="text-center">Location</th>
+									<th class="text-center">Locoation</th>
 									<th class="text-center">Action</th>
 								</tr>
 							</thead>
