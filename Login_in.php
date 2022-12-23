@@ -61,7 +61,7 @@ if(isset($_POST['login'])){
 .menu{
     width: 50px;
     float: left;
-    height: 980px;
+    height: 1100px;
 	color: #ff7300;
 
 }
