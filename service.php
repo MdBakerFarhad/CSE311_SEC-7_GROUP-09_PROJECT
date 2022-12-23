@@ -192,7 +192,7 @@ ul li a:hover{
             <br> and the airline company by creating a more user-friendly environment.<br> This project
             attempts to recreate the fundamental concepts of the booking system for airlines.<br><br></h3></p>
 
-            <button class="cn"><a href="./User/registration.html">JOIN US</a></button>
+            <button class="cn"><a href="./Registration.php">JOIN US</a></button>
 
 </div>
 

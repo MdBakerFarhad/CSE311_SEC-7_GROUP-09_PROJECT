@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2022 at 02:13 PM
+-- Generation Time: Dec 23, 2022 at 12:08 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `flight_booking_db`
+-- Database: `online_flight_management`
 --
 
 -- --------------------------------------------------------
@@ -38,9 +38,10 @@ CREATE TABLE `airlines_list` (
 --
 
 INSERT INTO `airlines_list` (`id`, `airlines`, `logo_path`) VALUES
-(1, 'AirAsia', '1600999080_kisspng-flight-indonesia-airasia-airasia-japan-airline-tic-asia-5abad146966736.8321896415221927106161.jpg'),
-(2, 'Philippine Airlines', '1600999200_Philippine-Airlines-Logo.jpg'),
-(3, 'Cebu Pacific', '1600999200_43cada0008538e3c1a1f4675e5a7aabe.jpeg');
+(1, 'Biman Bangladesh', 'Biman Bangladesh.png'),
+(2, 'NovoAir', 'NovoAir.jpg'),
+(3, 'US Bangla', 'US Bangla.png'),
+(4, 'Biman Bangladesh Airlines ', '1671729420_Biman Bangladesh.png');
 
 -- --------------------------------------------------------
 
@@ -61,7 +62,6 @@ CREATE TABLE `airport_list` (
 INSERT INTO `airport_list` (`id`, `airport`, `location`) VALUES
 (2, 'Beijing Capital International Airport', 'Chaoyang-Shunyi, Beijing'),
 (3, 'Los Angeles International Airport', 'Los Angeles, California'),
-(4, 'Dubai International Airport', 'Garhoud, Dubai'),
 (5, 'Mactan-Cebu Airport', 'Cebu'),
 (6, 'Hazrat Shah Jalal', 'Dhaka, Bangladesh '),
 (7, 'Benazir Bhutto International Airport', 'Islamabad,Pakistan'),
@@ -83,6 +83,15 @@ CREATE TABLE `booked_flight` (
   `address` text NOT NULL,
   `contact` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `booked_flight`
+--
+
+INSERT INTO `booked_flight` (`id`, `flight_id`, `name`, `address`, `contact`) VALUES
+(4, 4, 'Baker', 'Dhaka', '018276276'),
+(9, 4, 'Farhad', 'Dhaka,Bangladesh', 'md@gmail.com'),
+(10, 2, 'Unknown', 'bangladesh', '12213234');
 
 -- --------------------------------------------------------
 
@@ -108,8 +117,8 @@ CREATE TABLE `flight_list` (
 --
 
 INSERT INTO `flight_list` (`id`, `airline_id`, `plane_no`, `departure_airport_id`, `arrival_airport_id`, `departure_datetime`, `arrival_datetime`, `seats`, `price`, `date_created`) VALUES
-(4, 3, 'CEB10023', 1, 5, '2021-03-20 01:00:00', '2021-03-20 02:00:00', 100, 3500, '2021-02-25 14:50:47'),
-(5, 2, '123', 4, 3, '2022-12-15 07:39:00', '2022-12-28 07:39:00', 120, 2345, '2022-12-22 07:39:33');
+(5, 2, '123', 9, 3, '2022-12-15 07:39:00', '2022-12-28 07:39:00', 120, 2345, '2022-12-22 07:39:33'),
+(6, 1, '787', 6, 11, '2022-12-22 10:49:00', '2022-12-23 10:49:00', 220, 4500, '2022-12-22 10:49:28');
 
 -- --------------------------------------------------------
 
@@ -133,8 +142,11 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `address`, `contact`, `username`, `password`, `type`) VALUES
 (1, 'Boss', '', '', 'admin', 'admin123', 1),
-(2, 'Baker', '', '', 'baker', 'admin123', 2),
-(17, 'Farhad', '', '', 'farhad', 'farhad123', 2);
+(2, 'Baker', '', '', 'baker', 'admin123', 1),
+(17, 'Farhad', '', '', 'farhad', 'farhad123', 2),
+(18, 'Tasdeeq', '', '', 'tasdeeq', 'tasdeeq123', 2),
+(19, 'Amzad', '', '', 'amzad', 'amzad123', 2),
+(21, 'Nihal', '', '', 'nihal', '4a48db6397a59b7aa1ed297337a5aea4', 2);
 
 --
 -- Indexes for dumped tables
@@ -178,7 +190,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `airlines_list`
 --
 ALTER TABLE `airlines_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `airport_list`
@@ -190,19 +202,19 @@ ALTER TABLE `airport_list`
 -- AUTO_INCREMENT for table `booked_flight`
 --
 ALTER TABLE `booked_flight`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `flight_list`
 --
 ALTER TABLE `flight_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
